@@ -6,14 +6,13 @@ require 'fileutils'
 class TestDB < MiniTest::Unit::TestCase
 
   def setup
-    $db_file = Tempfile.new('chef-dashboard')
-    $db = Chef::Dashboard::DB.new({ :adapter => "sqlite3", :database => $db_file.path }, false)
+    $db = Chef::Dashboard::DB.new("database.test.yml")
     $db.migrate(true)
     $db.require_models
   end
 
   def teardown
-    FileUtils.rm_f $db_file
+    FileUtils.rm_f "/tmp/chef-dashboard.db" 
   end
 
   def get_report_hash
