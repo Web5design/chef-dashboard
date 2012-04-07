@@ -1,3 +1,4 @@
+require 'yaml'
 require 'active_record'
 require 'active_support'
 require 'dashboard'
@@ -6,8 +7,8 @@ class Chef::Dashboard::DB
 
   attr_reader :db
 
-  def initialize(dsn, do_require_models = true)
-    ActiveRecord::Base.establish_connection(dsn)
+  def initialize(config="database.yml", do_require_models = true)
+    ActiveRecord::Base.establish_connection(YAML.load_file(config))
     require_models if do_require_models
   end
 

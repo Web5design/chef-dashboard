@@ -5,7 +5,7 @@ require 'faker'
 $:.unshift 'lib'
 require 'db'
 
-db = Chef::Dashboard::DB.new({ :adapter => "sqlite3", :database => "dashboard.db" })
+db = Chef::Dashboard::DB.new
 
 resources = [
   "bash[hello yes]",

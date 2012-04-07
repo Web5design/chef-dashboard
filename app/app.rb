@@ -5,7 +5,7 @@ require 'dashboard'
 require 'db'
 
 # FIXME configuration
-$db = Chef::Dashboard::DB.new({ :adapter => "sqlite3", :database => "dashboard.db" })
+$db = Chef::Dashboard::DB.new
 
 set :haml, :layout => :application_layout
 
